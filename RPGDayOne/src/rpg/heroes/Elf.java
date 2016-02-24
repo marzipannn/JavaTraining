@@ -18,6 +18,10 @@ public class Elf extends Hero {
     }
 
     public void attacks() {
-        super.attacks("Goblin " + this.getName());
+        super.attacks("Elf " + this.getName());
+    }
+
+    public String getType() {
+        return "Elf";
     }
 }

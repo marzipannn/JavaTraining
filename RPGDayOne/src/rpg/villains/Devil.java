@@ -14,7 +14,7 @@ public class Devil extends Villain {
         return s;
     }
 
-    public void attacks() {
-        super.attacks("Devil " + this.getName());
+    public String getType() {
+        return "Devil";
     }
 }

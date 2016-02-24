@@ -3,37 +3,53 @@ package rpg;
 /**
  * Created by Cinnamon on 2/23/16.
  */
-public class Entity {
+public abstract class Entity implements Identifiable {
     private String name;
+    private String type;
     private int healthPoints;
     private int attackDamage;
     private int level;
     private int experiencePoints;
+    private int id;
+    private static int iterator = 0;
 
+    /* constructors */
     public Entity(String name) {
         this(name, 1);
     }
-
     public Entity(String name, int level) {
         this.name = name;
         this.level = level;
         this.healthPoints = 100;
         this.attackDamage = 10;
+        this.id = generateUniqueId();
     }
     public Entity(String name, int level, int attackDamage, int healthPoints) {
         this.name = name;
         this.level = level;
         this.attackDamage = attackDamage + (level * 10);
         this.healthPoints = healthPoints + (level * 10);
+        this.id = generateUniqueId();
     }
 
-    public int receiveDamage(int amount) {
-        this.healthPoints -= amount;
-        return amount;
-    }
+    public abstract int receiveDamage(int amount);
+    public abstract int getEffectiveAttackDamage();
 
-    public int getEffectiveAttackDamage() {
-        return this.attackDamage;
+    public abstract String getType();
+
+    /* id related methods */
+    public int getId() {
+        return id;
+    }
+    private int generateUniqueId() {
+        return iterator++;
+    }
+    public boolean equals(Object object) {
+        Entity entity = (Entity)object;
+        if (this.getId() == entity.getId())
+            return true;
+        else
+            return false;
     }
 
     public String getName() {

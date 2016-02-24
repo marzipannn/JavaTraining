@@ -17,4 +17,8 @@ public class Goblin extends Villain {
     public void attacks() {
         super.attacks("Goblin " + this.getName());
     }
+
+    public String getType() {
+        return "Goblin";
+    }
 }

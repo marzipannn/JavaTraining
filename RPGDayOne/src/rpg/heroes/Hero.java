@@ -5,7 +5,7 @@ import rpg.artifacts.*;
 /**
  * Created by Cinnamon on 2/23/16.
  */
-public class Hero extends Entity {
+public abstract class Hero extends Entity {
     protected Weapon weapon;
     protected Armor armor;
 

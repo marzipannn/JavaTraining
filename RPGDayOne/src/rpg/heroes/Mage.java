@@ -20,4 +20,8 @@ public class Mage extends Hero {
     public void attacks() {
         super.attacks("Mage " + this.getName());
     }
+
+    public String getType() {
+        return "Mage";
+    }
 }
