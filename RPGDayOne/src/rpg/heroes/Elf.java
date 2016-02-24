@@ -1,23 +1,23 @@
 package rpg.heroes;
 
 /**
- * Created by Cinnamon on 2/23/16.
+ * Created by Cinnamon on 2/24/16.
  */
-public class Mage extends Hero {
-    public Mage(String name) {
+public class Elf extends Hero {
+    public Elf(String name) {
         super(name, 1, 100, 50);
     }
-    public Mage(String name, int level) {
+    public Elf(String name, int level) {
         super(name, level, 100, 50);
     }
     public String toString() {
-        String s = "Mage " + this.getName() + " (level " + this.getLevel() +
+        String s = "Elf " + this.getName() + " (level " + this.getLevel() +
                 "), attack: " + this.getEffectiveAttackDamage() +
                 ", health: " + this.getHealthPoints();
         return s;
     }
 
     public void attacks() {
-        super.attacks("Mage " + this.getName());
+        super.attacks("Goblin " + this.getName());
     }
 }

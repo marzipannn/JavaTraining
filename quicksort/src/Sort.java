@@ -48,14 +48,14 @@ public class Sort {
 
     public static void main(String a[]){
 
-        String[] s = {"Z", "012", "this", "is", "an", "array", "of", "strings"};
-        System.out.println("BEFORE SORT:");
+        String[] s = {"zebra", "yang", "ABC", "strings", "random", "stuff"};
+        System.out.println("before sort:");
         for (String str : s) {
             System.out.println(str);
         }
         Sort sorter = new Sort();
         sorter.qsort(s);
-        System.out.println("AFTER SORT:");
+        System.out.println("after sort:");
         for (String str : s) {
             System.out.println(str);
         }

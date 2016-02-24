@@ -17,11 +17,14 @@ public class Hero extends Entity {
         super(name, level);
     }
 
+    public Hero(String name, int level, int attackDamage, int healthPoints) {
+        super(name, level, attackDamage, healthPoints);
+    }
+
     public String toString() {
-        String s = "-- Hero created --" + "\n" +
-                "name: " + this.name + "\n" +
-                "level: " + this.level + "\n" +
-                "------";
+        String s = "Hero " + this.getName() + " (level " + this.getLevel() +
+                "), attack: " + this.getEffectiveAttackDamage() +
+                ", health: " + this.getHealthPoints();
         return s;
     }
 
@@ -39,10 +42,11 @@ public class Hero extends Entity {
         else
             defense = 0;
         amount -= defense;
-        this.healthPoints -= amount;
+        this.setHealthPoints(this.getHealthPoints() - amount);
         return amount;
     }
-    public int dealDamage(int attackValue) {
+    public int getEffectiveAttackDamage() {
+        int attackValue = this.getAttackDamage();
         int attackBonus;
         if (this.weapon != null)
             attackBonus = weapon.attackBonus;
@@ -50,5 +54,11 @@ public class Hero extends Entity {
             attackBonus = 0;
         attackValue += attackBonus;
         return attackValue;
+    }
+
+    public void attacks(String character) {
+        int damage;
+        damage = getEffectiveAttackDamage();
+        super.attacks(character, damage);
     }
 }
