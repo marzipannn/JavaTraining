@@ -33,7 +33,7 @@ public abstract class Entity implements Identifiable {
     }
 
     public abstract int receiveDamage(int amount);
-    public abstract int getEffectiveAttackDamage();
+    public abstract int dealDamage();
 
     public abstract String getType();
 
@@ -69,6 +69,9 @@ public abstract class Entity implements Identifiable {
     }
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
+    }
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public void attacks(String character, int damage) {

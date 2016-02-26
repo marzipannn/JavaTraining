@@ -1,37 +1,48 @@
 package rpg.heroes;
 import rpg.Entity;
 import rpg.artifacts.*;
+import java.util.ArrayList;
 
 /**
  * Created by Cinnamon on 2/23/16.
  */
+
+class NotEnoughSpaceException extends Exception {
+    public NotEnoughSpaceException(String message) {
+        super(message);
+    }
+}
 public abstract class Hero extends Entity {
     protected Weapon weapon;
     protected Armor armor;
+    protected ArrayList<Artifact> inventory;
+    protected int inventoryMax;
 
     public Hero(String name) {
-        super(name, 1);
+        this(name, 1, 100, 100);
     }
 
     public Hero(String name, int level) {
-        super(name, level);
+        this(name, level, 100, 100);
     }
 
     public Hero(String name, int level, int attackDamage, int healthPoints) {
         super(name, level, attackDamage, healthPoints);
+        inventory = new ArrayList<Artifact>(level * 2);
+        inventoryMax = level * 2;
     }
 
     public String toString() {
         String s = "Hero " + this.getName() + " (level " + this.getLevel() +
-                "), attack: " + this.getEffectiveAttackDamage() +
+                "), attack: " + this.dealDamage() +
                 ", health: " + this.getHealthPoints();
         return s;
     }
 
-    public void addWeapon(Weapon weapon) {
+    public void equipWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
-    public void addArmor(Armor armor) {
+    public void equipArmor(Armor armor) {
         this.armor = armor;
     }
 
@@ -45,7 +56,7 @@ public abstract class Hero extends Entity {
         this.setHealthPoints(this.getHealthPoints() - amount);
         return amount;
     }
-    public int getEffectiveAttackDamage() {
+    public int dealDamage() {
         int attackValue = this.getAttackDamage();
         int attackBonus;
         if (this.weapon != null)
@@ -58,7 +69,15 @@ public abstract class Hero extends Entity {
 
     public void attacks(String character) {
         int damage;
-        damage = getEffectiveAttackDamage();
+        damage = dealDamage();
         super.attacks(character, damage);
+    }
+
+    public void addToInventory(Artifact artifact) throws NotEnoughSpaceException {
+        if (inventory.size() <= inventoryMax) {
+            inventory.add(artifact);
+        }
+        else
+            throw new NotEnoughSpaceException("Your inventory is full!");
     }
 }

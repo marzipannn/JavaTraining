@@ -9,7 +9,7 @@ public class Devil extends Villain {
     }
     public String toString() {
         String s = "Devil " + this.getName() + " (level " + this.getLevel() +
-                "), attack: " + this.getEffectiveAttackDamage() +
+                "), attack: " + this.dealDamage() +
                 ", health: " + this.getHealthPoints();
         return s;
     }

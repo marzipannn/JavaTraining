@@ -27,7 +27,7 @@ public abstract class Villain extends Entity {
         this.setHealthPoints(this.getHealthPoints() - amount);
         return (amount);
     }
-    public int getEffectiveAttackDamage() {
+    public int dealDamage() {
         int attackValue = this.getAttackDamage();
         int attackBonus;
         if (this.weapon != null)
@@ -39,7 +39,7 @@ public abstract class Villain extends Entity {
     }
     public void attacks(String character) {
         int damage;
-        damage = getEffectiveAttackDamage();
+        damage = dealDamage();
         super.attacks(character, damage);
     }
 }

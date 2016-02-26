@@ -12,7 +12,7 @@ public class Mage extends Hero {
     }
     public String toString() {
         String s = "Mage " + this.getName() + " (level " + this.getLevel() +
-                "), attack: " + this.getEffectiveAttackDamage() +
+                "), attack: " + this.dealDamage() +
                 ", health: " + this.getHealthPoints();
         return s;
     }

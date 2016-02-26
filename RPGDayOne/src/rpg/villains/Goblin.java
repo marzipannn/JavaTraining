@@ -9,7 +9,7 @@ public class Goblin extends Villain {
     }
     public String toString() {
         String s = "Goblin " + this.getName() + " (level " + this.getLevel() +
-                "), attack: " + this.getEffectiveAttackDamage() +
+                "), attack: " + this.dealDamage() +
                 ", health: " + this.getHealthPoints();
         return s;
     }
