@@ -16,13 +16,19 @@ public class Main {
 
     public static void main(String[] args) {
         Player player = new Player();
-        Hero mage = new Mage("mark", 5);
+        Hero mage = new Mage("meow", 5);
         Mission mission = new Mission();
+        GameView view;
+        Controller mainController = new Controller();
 
         player.hero = mage;
         mission.playMission(1, player);
         Map map = new Map();
         map.display();
+
+        view = new GUIView(mainController);
+        view.displayMainMenu();
+
         /*Mage mage = new Mage("A");
         Elf elf = new Elf("B");
         Devil devil = new Devil("X");

@@ -1,5 +1,6 @@
 package rpg.heroes;
 import rpg.Entity;
+import rpg.villains.*;
 import rpg.artifacts.*;
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public abstract class Hero extends Entity {
         this.setHealthPoints(this.getHealthPoints() - amount);
         return amount;
     }
-    public int dealDamage() {
+    public int getAttackValue() {
         int attackValue = this.getAttackDamage();
         int attackBonus;
         if (this.weapon != null)
@@ -65,6 +66,11 @@ public abstract class Hero extends Entity {
             attackBonus = 0;
         attackValue += attackBonus;
         return attackValue;
+    }
+
+    public int dealDamageTo(Villain opponent) {
+        int dmg = opponent.receiveDamageFrom(this);
+        return dmg;
     }
 
     public void attacks(String character) {

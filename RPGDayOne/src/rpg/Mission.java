@@ -5,6 +5,7 @@ import rpg.villains.*;
  * Created by Cinnamon on 2/25/16.
  */
 public class Mission {
+    private Villain[] monsters;
     private void playMissionOne(Player player) {
         int turn = 0;
 

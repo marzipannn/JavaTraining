@@ -1,5 +1,6 @@
 package rpg.villains;
 import rpg.Entity;
+import rpg.heroes.*;
 import rpg.artifacts.Weapon;
 
 /**
@@ -37,6 +38,14 @@ public abstract class Villain extends Entity {
         attackValue += attackBonus;
         return attackValue;
     }
+
+    public int receiveDamageFrom(Hero attacker) {
+        int dmg = attacker.getAttackValue();
+
+        this.setHealthPoints(this.getHealthPoints() - dmg);
+        return dmg;
+    }
+
     public void attacks(String character) {
         int damage;
         damage = dealDamage();
