@@ -1,9 +1,11 @@
 package rpg;
 
+import java.io.Serializable;
+
 /**
  * Created by Cinnamon on 2/23/16.
  */
-public abstract class Entity implements Identifiable {
+public abstract class Entity implements Identifiable, Serializable {
     private String name;
     private String type;
     private int healthPoints;
@@ -31,9 +33,6 @@ public abstract class Entity implements Identifiable {
         this.healthPoints = healthPoints + (level * 10);
         this.id = generateUniqueId();
     }
-
-    public abstract int receiveDamage(int amount);
-    public abstract int dealDamage();
 
     public abstract String getType();
 

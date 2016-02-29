@@ -26,7 +26,7 @@ public class MainMenu {
         selectHeroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                mainView.
+                mainView.displaySelectHero();
             }
         });
 

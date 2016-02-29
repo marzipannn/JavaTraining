@@ -17,17 +17,27 @@ public class Main {
     public static void main(String[] args) {
         Player player = new Player();
         Hero mage = new Mage("meow", 5);
+        Hero elfy = new Elf("elina", 10);
+        Hero elf = new Elf("shion", 50);
         Mission mission = new Mission();
         GameView view;
-        Controller mainController = new Controller();
+        Controller mainController = new Controller(player);
 
-        player.hero = mage;
-        mission.playMission(1, player);
         Map map = new Map();
         map.display();
 
         view = new GUIView(mainController);
-        view.displayMainMenu();
+
+        player.retrieveHeroList();
+        for (Hero h: player.savedHeroes) {
+            System.out.println(h);
+        }
+        //player.savedHeroes.add(mage);
+        //player.savedHeroes.add(elfy);
+        //player.savedHeroes.add(elf);
+        //player.saveHeroList();
+
+        //view.displayMainMenu();
 
         /*Mage mage = new Mage("A");
         Elf elf = new Elf("B");

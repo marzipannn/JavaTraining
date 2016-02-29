@@ -10,9 +10,9 @@ import static java.lang.System.exit;
  * Created by Cinnamon on 2/28/16.
  */
 public class SelectHero {
-    private JList list1;
-    private JTextArea textArea1;
-    private JButton button1;
+    private JList heroList;
+    private JTextArea heroDescription;
+    private JButton chooseHeroButton;
     private JPanel rootPanel;
 
     public GUIView mainView;

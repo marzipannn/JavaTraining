@@ -2,6 +2,8 @@ package rpg.heroes;
 import rpg.Entity;
 import rpg.villains.*;
 import rpg.artifacts.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,7 @@ class NotEnoughSpaceException extends Exception {
         super(message);
     }
 }
-public abstract class Hero extends Entity {
+public abstract class Hero extends Entity implements Serializable {
     protected Weapon weapon;
     protected Armor armor;
     protected ArrayList<Artifact> inventory;
@@ -35,7 +37,7 @@ public abstract class Hero extends Entity {
 
     public String toString() {
         String s = "Hero " + this.getName() + " (level " + this.getLevel() +
-                "), attack: " + this.dealDamage() +
+                "), attack: " + this.getAttackValue() +
                 ", health: " + this.getHealthPoints();
         return s;
     }
@@ -75,7 +77,7 @@ public abstract class Hero extends Entity {
 
     public void attacks(String character) {
         int damage;
-        damage = dealDamage();
+        damage = getAttackValue();
         super.attacks(character, damage);
     }
 

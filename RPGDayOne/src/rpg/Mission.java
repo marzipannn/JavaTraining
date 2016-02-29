@@ -13,7 +13,7 @@ public class Mission {
         villain.setLevel(5);
         while (turn < 2) {
             if (turn % 2 == 0) {
-                villain.receiveDamage(player.hero.dealDamage());
+                player.hero.dealDamageTo(villain);
                 //player.hero.attacks();
                 System.out.println(villain);
             }
